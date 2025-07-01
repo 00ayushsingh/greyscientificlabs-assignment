@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hospital-api
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "cd hospital_api && gunicorn hospital_api.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: PYTHON_VERSION
+        value: 3.11.0
+databases:
+  - name: hospital-api-db
+    databaseName: hospital_api
+    user: hospital_api_user
